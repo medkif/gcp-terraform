@@ -34,7 +34,7 @@ EOT
 }
 
 resource "google_service_account_iam_member" "github_oidc_binding" {
-  service_account_id = "${var.project_id}/serviceAccounts/${var.service_account_email}"
+  service_account_id = "projects/${var.project_id}/serviceAccounts/${var.service_account_email}"
   role               = "roles/iam.workloadIdentityUser"
   member             = "principalSet://iam.googleapis.com/projects/${var.project_number}/locations/global/workloadIdentityPools/${google_iam_workload_identity_pool.wid_pool.workload_identity_pool_id}/attribute.repository/${var.github_owner}/${var.github_repo}"
   depends_on = [google_iam_workload_identity_pool.wid_pool]
