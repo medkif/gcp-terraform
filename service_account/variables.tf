@@ -10,4 +10,5 @@ variable "project_id" {
 variable "sa_roles" {
   description = "List of roles to give the service account."
   type = list(string)
+  default = []
 }

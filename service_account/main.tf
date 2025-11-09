@@ -10,17 +10,17 @@ resource "google_service_account" "sa" {
 # IAM
 #-----------
 
-# 1.1 Service Account User
-resource "google_service_account_iam_binding" "admin_account_iam" {
-  service_account_id = google_service_account.sa.name
+# 1.1 Service Account User: Grant a user permission to act as or use a specific service account.
+resource "google_service_account_iam_binding" "service_account_user__iam" {
+  service_account_id = google_service_account.sa.name # Target SA (what sa to act as)
   role               = "roles/iam.serviceAccountUser"
 
   members = [
-    "user:${var.user_email}",
+    "user:${var.user_email}", # Bind the role to the specified user.
   ]
 }
 
-# 1.2 Workload Identity User
+# # 1.2 Workload Identity User: Grants the same user the ability to impersonate the service account via Workload Identity.
 resource "google_service_account_iam_binding" "workload_identity_user_iam" {
   service_account_id = google_service_account.sa.name
   role               = "roles/iam.workloadIdentityUser"
