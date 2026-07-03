@@ -6,6 +6,7 @@ variable "project_number" {
 }
 variable "workload_identity_pool_id" {
   type = string
+  default = "pool"
 }
 variable "service_account_email" {
   type = string
