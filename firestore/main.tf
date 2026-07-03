@@ -3,6 +3,9 @@ resource "google_firestore_database" "database" {
   name        = var.firestore_db_name
   location_id = var.region
   type        = "FIRESTORE_NATIVE"
+  delete_protection_state = "DELETE_PROTECTION_ENABLED"
+  deletion_policy = "DELETE"
+
 }
 
 resource "google_firestore_document" "mydoc" {
